@@ -1,3 +1,6 @@
+# devContainerFeature.schema.json
+
+```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Development Container Feature Metadata",
@@ -346,3 +349,4 @@
     }
   ]
 }
+```

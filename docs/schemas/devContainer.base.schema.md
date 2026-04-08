@@ -1,3 +1,6 @@
+# devContainer.base.schema.json
+
+```json
 {
 	"$schema": "https://json-schema.org/draft/2019-09/schema",
 	"description": "Defines a dev container",
@@ -769,3 +772,4 @@
 	],
 	"unevaluatedProperties": false
 }
+```

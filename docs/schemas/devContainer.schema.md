@@ -1,3 +1,6 @@
+# devContainer.schema.json
+
+```json
 {
     "allOf": [
         {
@@ -11,3 +14,4 @@
         }
     ]
 }
+```
