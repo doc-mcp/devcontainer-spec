@@ -18,7 +18,7 @@ jobs:
         uses: extractions/setup-just@v3
 
       - name: Update submodule and copy docs
-        run: just sync-spec
+        run: just ci
 
       - name: Commit and push changes
         run: |

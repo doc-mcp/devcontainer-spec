@@ -1,21 +1,27 @@
-SPEC_REPO := "https://github.com/devcontainers/spec.git"
-TMP_DIR := "./tmp"
+SUBMODULE_DIR := "./3rdparty/spec"
 
-sync-spec:
-    @echo "Downloading spec archive from $(SPEC_REPO_ARCHIVE)"
-    rm -rf {{TMP_DIR}}
-    mkdir -p {{TMP_DIR}}
+# Pull latest upstream, sync files, and build schemas
+ci: update-submodule sync-files build-schemas
+    @echo "Spec synchronization complete"
 
-    @echo "Cloning the spec repository from $(SPEC_REPO)"
-    git clone --depth 1 {{SPEC_REPO}} {{TMP_DIR}}
+# Update the submodule to the latest upstream commit
+update-submodule:
+    @echo "Initializing and updating submodule..."
+    git submodule update --init --remote {{SUBMODULE_DIR}}
+    @echo "Submodule updated to latest upstream commit"
 
-    @echo "Copying the spec files to the current directory"
+# Copy spec files from the submodule into docs/
+sync-files:
+    @echo "Syncing specification files from submodule..."
     mkdir -p ./docs/specification
     mkdir -p ./docs/schemas
-    rsync -a --delete --exclude='.git' {{TMP_DIR}}/docs/ ./docs/specification/
-    rsync -a --delete --exclude='.git' {{TMP_DIR}}/schemas/ ./docs/schemas/
+    rsync -a --delete --exclude='.git' {{SUBMODULE_DIR}}/docs/ ./docs/specification/
+    rsync -a --delete --exclude='.git' {{SUBMODULE_DIR}}/schemas/ ./docs/schemas/
+    @echo "Files synced"
 
-    @echo "Formatting JSON files in docs/schemas to Markdown..."
+# Convert JSON schema files in docs/schemas/ to Markdown
+build-schemas:
+    @echo "Formatting JSON schema files to Markdown..."
     @for file in ./docs/schemas/*.json; do \
         if [ -f "$file" ]; then \
             filename=$(basename "$file"); \
@@ -28,8 +34,4 @@ sync-spec:
             rm -f "$file"; \
         fi; \
     done
-
-    @echo "Cleaning up temporary directory"
-    rm -rf {{TMP_DIR}}
-
-    @echo "Spec synchronization complete"
+    @echo "Schema build complete"
