@@ -1,0 +1,3 @@
+[submodule "3rdparty/spec"]
+	path = 3rdparty/spec
+	url = https://github.com/devcontainers/spec.git
