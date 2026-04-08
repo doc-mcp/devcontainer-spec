@@ -37,6 +37,6 @@
 
 ## Schemas
 
-* [devContainer.json schema](schemas/devContainer.schema.json)
-* [devContainer.base schema](schemas/devContainer.base.schema.json)
-* [devContainer Feature schema](schemas/devContainerFeature.schema.json)
+* [devContainer.json schema](schemas/devContainer.schema.md)
+* [devContainer.base schema](schemas/devContainer.base.schema.md)
+* [devContainer Feature schema](schemas/devContainerFeature.schema.md)
