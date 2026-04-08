@@ -40,3 +40,7 @@
 * [devContainer.json schema](schemas/devContainer.schema.md)
 * [devContainer.base schema](schemas/devContainer.base.schema.md)
 * [devContainer Feature schema](schemas/devContainerFeature.schema.md)
+
+## License
+
+* [Docs License](LICENSE.md)
